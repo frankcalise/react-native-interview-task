@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
 import useName from "../hooks/useName";
-import ImageList from '../components/ImageList'
+import ImageList from "../components/ImageList";
 
 export default function ImagesScreen({ navigation }) {
   // from navigation params
@@ -11,7 +11,7 @@ export default function ImagesScreen({ navigation }) {
   const { name } = useName();
 
   return (
-    <View>
+    <View style={{ flex: 1, flexDirection: "column" }}>
       <Text>
         Today's your lucky day! {favoriteNumber} images brought right to your
         phone, {name}

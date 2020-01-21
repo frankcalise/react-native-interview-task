@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import FetchImage from "./FetchImage";
 
 // added this because I overlooked passing the number
 // straight from formik (string, since TextInput)
@@ -14,19 +15,28 @@ function ImageList({ number }) {
     .fill(null)
     .map(
       () =>
-        `https://picsum.photos/200/113/?image=${Math.floor(
+        `https://picsum.photos/100/100/?image=${Math.floor(
           Math.random() * 100
         )}`
     );
-
   return (
-    <View>
-      {items.map((url, index) => (
-        <Text key={`image-${index}`}>{url}</Text>
-      ))}
-    </View>
+    <FlatList
+      data={items}
+      horizontal={false}
+      renderItem={({ item }) => <FetchImage url={item} />}
+      keyExtractor={(item, index) => index.toString()}
+      numColumns={3}
+    />
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingTop: 20
+  }
+});
 
 ImageList.propTypes = propTypes;
 
