@@ -1,23 +1,12 @@
 import React from "react";
 import { View, Text, Button, AsyncStorage } from "react-native";
-
+import useName from "../hooks/useName";
 export default function ImagesScreen({ navigation }) {
   // from navigation params
   const favoriteNumber = navigation.getParam("favoriteNumber");
 
   // let's grab the user's name from async storage
-  // and set it to state
-  const [name, setName] = React.useState('Looking up your name...')
-
-  React.useEffect(() => {
-    // we could use useCallback to not do this here directly
-    async function getName() {
-      const lookupName = await AsyncStorage.getItem('name')
-      setName(lookupName)
-    }
-
-    getName()
-  }, [])
+  const { name } = useName();
 
   return (
     <View>
