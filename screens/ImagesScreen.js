@@ -12,16 +12,18 @@ export default function ImagesScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, flexDirection: "column" }}>
-      <Text>
-        Today's your lucky day! {favoriteNumber} images brought right to your
-        phone, {name}
+      <Text style={{ margin: 20 }}>
+        {name}, today's your lucky day! {favoriteNumber} images brought right to your
+        phone.
       </Text>
-      <Button
-        title="No thanks, get me to root screen"
-        onPress={() => {
-          navigation.popToTop();
-        }}
-      />
+      <View style={{ margin: 20 }}>
+        <Button
+          title="No thanks, get me to root screen"
+          onPress={() => {
+            navigation.popToTop();
+          }}
+        />
+      </View>
       <ImageList style={{ marginTop: 20 }} number={Number(favoriteNumber)} />
     </View>
   );

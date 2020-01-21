@@ -67,7 +67,7 @@ export default function FormScreen({ navigation }) {
                 <View style={{ margin: 20 }}>
                   <Button
                     color="#00B0F0"
-                    title="Submit"
+                    title="Fetch me an image surprise"
                     onPress={handleSubmit}
                   />
                 </View>
