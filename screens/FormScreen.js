@@ -29,7 +29,7 @@ export default function FormScreen({ navigation }) {
           <Formik
             initialValues={{ name, favoriteNumber: -1 }}
             onSubmit={values => {
-              // User submitted, head to the images screen to
+              // user submitted, head to the images screen to
               // retrieve that many images in a list. Pass it via
               // navigation parameters
               navigation.navigate("Images", {

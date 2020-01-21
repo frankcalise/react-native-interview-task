@@ -1,6 +1,8 @@
 import React from "react";
-import { View, Text, Button, AsyncStorage } from "react-native";
+import { View, Text, Button } from "react-native";
 import useName from "../hooks/useName";
+import ImageList from '../components/ImageList'
+
 export default function ImagesScreen({ navigation }) {
   // from navigation params
   const favoriteNumber = navigation.getParam("favoriteNumber");
@@ -19,7 +21,8 @@ export default function ImagesScreen({ navigation }) {
         onPress={() => {
           navigation.popToTop();
         }}
-      ></Button>
+      />
+      <ImageList number={Number(favoriteNumber)} />
     </View>
   );
 }
