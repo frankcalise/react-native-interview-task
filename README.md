@@ -12,3 +12,6 @@ expo start
 react-navigation via:
 expo install react-navigation react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context
 expo install react-navigation-stack @react-native-community/masked-view
+
+Formik and yup
+expo install formik yup
