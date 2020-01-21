@@ -1,8 +1,8 @@
 import React from "react";
+import {AsyncStorage} from 'react-native'
 import { View, StyleSheet, Text, TextInput, Button } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { NavigationEvents } from "react-navigation";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -29,6 +29,7 @@ export default function FormScreen({ navigation }) {
           })
 
           // Store name in AsyncStorage to not ask next time app is launched
+          AsyncStorage.setItem('name', values.name)
         }}
         validationSchema={validationSchema}
       >
