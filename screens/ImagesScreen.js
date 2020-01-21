@@ -22,7 +22,7 @@ export default function ImagesScreen({ navigation }) {
           navigation.popToTop();
         }}
       />
-      <ImageList number={Number(favoriteNumber)} />
+      <ImageList style={{ marginTop: 20 }} number={Number(favoriteNumber)} />
     </View>
   );
 }

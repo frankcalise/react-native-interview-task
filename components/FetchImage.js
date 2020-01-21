@@ -2,10 +2,12 @@ import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 
 export default function FetchImage({ url }) {
-  console.log(url);
   return (
     <View style={styles.container}>
-      <Image style={styles.thumbnail} source={{ uri: url }} />
+      <Image
+        style={styles.thumbnail}
+        source={{ uri: url }}
+      />
     </View>
   );
 }

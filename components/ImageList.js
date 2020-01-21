@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import FetchImage from "./FetchImage";
 
 // added this because I overlooked passing the number
@@ -19,22 +19,21 @@ function ImageList({ number }) {
           Math.random() * 100
         )}`
     );
+
   return (
     <FlatList
       data={items}
-      horizontal={false}
       renderItem={({ item }) => <FetchImage url={item} />}
       keyExtractor={(item, index) => index.toString()}
       numColumns={3}
+      columnWrapperStyle={styles.row}
     />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingTop: 20
+  row: {
+    flex: 1, justifyContent: "space-around"
   }
 });
 
