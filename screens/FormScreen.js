@@ -11,41 +11,63 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function FormScreen({ navigation }) {
-  
   return (
-    <Formik
-      initialValues={{ name: "", favoriteNum: -1 }}
-      onSubmit={values => {
-        console.log("here in values", values);
-      }}
-      validationSchema={validationSchema}
-    >
-      {({ handleChange, values, errors, handleSubmit }) => (
-        <View>
-          <Text style={styles.heading}>Whoa, over here now!</Text>
-          <TextInput
-            style={{ height: 40 }}
-            placeholder={`Enter your name here`}
-            onChangeText={handleChange("name")}
-            value={values.name}
-          />
-          {errors.name && (
-            <Text style={{ fontSize: 10, color: "red" }}>{errors.name}</Text>
-          )}
-          <Button color="#00B0F0" title="Submit" onPress={handleSubmit} />
-        </View>
-      )}
-    </Formik>
+    <View>
+      <Text style={styles.heading}>Whoa, over here now!</Text>
+      <Formik
+        initialValues={{ name: "", favoriteNumber: -1 }}
+        onSubmit={values => {
+          console.log("here in values", values);
+        }}
+        validationSchema={validationSchema}
+      >
+        {({ handleChange, values, errors, handleSubmit }) => (
+          <>
+            <TextInput
+              style={styles.input}
+              placeholder={`Enter your name here`}
+              onChangeText={handleChange("name")}
+              value={values.name}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder={`Enter your favorte number here`}
+              onChangeText={handleChange("favoriteNumber")}
+              value={values.favoriteNumber}
+            />
+            {errors.name && <Text style={styles.error}>{errors.name}</Text>}
+            <View style={{ margin: 20 }}>
+              <Button color="#00B0F0" title="Submit" onPress={handleSubmit} />
+            </View>
+          </>
+        )}
+      </Formik>
+
+      <View style={{ margin: 20 }}>
+        <Button
+          color="#FF8C00"
+          title="Back via navigation prop"
+          onPress={() => {
+            navigation.goBack();
+          }}
+        />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    flexDirection: "column"
+  },
+  error: { margin: 20, fontSize: 10, color: "red" },
+  input: {
+    height: 40,
+    margin: 20,
+    borderColor: "black",
+    borderWidth: 1,
+    paddingHorizontal: 5
   },
   heading: {
     marginLeft: 20,
