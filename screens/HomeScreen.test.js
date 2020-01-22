@@ -1,19 +1,19 @@
-import React from 'react'
-import { render, findByText } from "@testing-library/react-native";
+import React from "react";
+import {
+  render,
+  fireEvent
+} from "@testing-library/react-native";
 import HomeScreen from "./HomeScreen";
 
-test("label should be present", async () => {
-  const { getByTestId, getByText, queryByTestId, baseElement } = render(
-    <HomeScreen />
-  );
+describe("<HomeScreen>", () => {
+  test("Press 'Let's go somewhere' button navigates", async () => {
+    const navigation = { navigate: jest.fn() };
 
-  await expect(findByText("Amazing")).toBeTruthy()
-});
+    const { getByText } = render(<HomeScreen navigation={navigation} />);
 
-test("button should be present", async () => {
-  const { getByTestId, getByText, queryByTestId, baseElement } = render(
-    <HomeScreen />
-  );
+    const button = getByText("Let's go somewhere");
+    fireEvent.press(button);
 
-  await expect(findByText("go somewhere")).toBeTruthy()
+    expect(navigation.navigate).toHaveBeenCalledTimes(1);
+  });
 });
