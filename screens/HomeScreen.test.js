@@ -16,4 +16,10 @@ describe("<HomeScreen>", () => {
 
     expect(navigation.navigate).toHaveBeenCalledTimes(1);
   });
+
+  test("Amazing label is displayed", async () => {
+    const { getByText } = render(<HomeScreen  />);
+    const label = getByText("Amazing, isn't it?")
+    expect(label).toBeTruthy()
+  })
 });
