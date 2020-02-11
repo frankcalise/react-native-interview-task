@@ -1,5 +1,20 @@
 import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
+import {
+  HeaderButtons,
+  HeaderButton,
+  Item
+} from "react-navigation-header-buttons";
+
+const MaterialIconHeaderButton = props => (
+  <HeaderButton
+    {...props}
+    IconComponent={MaterialIcon}
+    iconSize={25}
+    color="black"
+  />
+);
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -14,6 +29,17 @@ export default function HomeScreen({ navigation }) {
     </View>
   );
 }
+
+HomeScreen.navigationOptions = ({ navigation }) => {
+  return {
+    title: 'is this working',
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={MaterialIconHeaderButton}>
+        <Item title="Add" iconName="add" onPress={() => console.log("test")} />
+      </HeaderButtons>
+    )
+  };
+};
 
 const styles = StyleSheet.create({
   container: {
